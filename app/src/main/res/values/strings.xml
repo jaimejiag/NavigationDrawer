@@ -9,6 +9,27 @@
     <string name="action_help">Ayuda</string>
     <string name="action_config">Configuración</string>
 
+    <string name="pref_category_general">Preferencias Generales</string>
+    <string name="pref_title_showIcon">Mostrar Imagen</string>
+    <string name="pref_description_showIcon">Mostrar las images en los listados de la aplicación.</string>
+    <string name="pref_summary_numcolumn">Número de columnas que se mostrarán en los listados.</string>
+    <string name="pref_title_numcolumn">Número de columnas</string>
+    <string name="pref_title_aboutUs">Sobre nosotros</string>
+
+    <string-array name="pref_entries_numColumn">
+        <item>1 columna</item>
+        <item>2 columna</item>
+        <item>3 columna</item>
+        <item>4 columna</item>
+    </string-array>
+
+    <string-array name="pref_entryValues_numColumn">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

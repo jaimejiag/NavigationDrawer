@@ -1,5 +1,7 @@
 package com.examle.jaime.navigationdrawer;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,7 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentOne.OnFragmentInteractionListener,
+        FragmentTwo.OnFragmentInteractionListener{
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -60,29 +63,33 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
                 int id = item.getItemId();
                 Fragment fragment = null;
                 Class fragmentClass = null;
+
                 if (id == R.id.action_home) {
                     fragmentClass = FragmentOne.class;
                 } else if (id == R.id.action_sector) {
                     fragmentClass = FragmentTwo.class;
-                } else if (id == R.id.nav_slideshow) {
+                } else if (id == R.id.action_dependency) {
                     fragmentClass = FragmentOne.class;
-                } else if (id == R.id.nav_manage) {
-                    fragmentClass = FragmentTwo.class;
-                } else if (id == R.id.nav_share) {
+                } else if (id == R.id.action_config) {
+                    intent = new Intent(MainActivity.this, PreferenceActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.action_help) {
                     fragmentClass = FragmentOne.class;
-                } else if (id == R.id.nav_send) {
-                    fragmentClass = FragmentTwo.class;
                 }
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
+
+                if (intent == null) {
+                    try {
+                        fragment = (Fragment) fragmentClass.newInstance();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.frame_content, fragment).commit();
                 }
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(android.R.id.content, fragment).commit();
 
                 item.setChecked(true);
                 getSupportActionBar().setTitle(item.getTitle());
@@ -91,5 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

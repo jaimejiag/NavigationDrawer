@@ -5,21 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.examle.jaime.navigationdrawer.MainActivity">
+    tools:context="com.examle.jaime.navigationdrawer.PreferenceActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_pref"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="@dimen/elevation_toolbar"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:background="@color/colorPrimary"
         app:titleTextColor="@android:color/white"/>
 
-
     <FrameLayout
-        android:id="@+id/frame_content"
+        android:id="@+id/frame_pref"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
